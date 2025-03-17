@@ -11,7 +11,7 @@
     <groupId>net.konjarla</groupId>
     <artifactId>SMPhotoAssistant</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>smagent</name>
+    <name>smphotoassistant</name>
     <description>SmugMug AI Agent</description>
     <url/>
     <licenses>
