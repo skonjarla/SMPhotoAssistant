@@ -113,7 +113,7 @@ $ mvn spring-boot:run
 ```
 * Or run the jar file
 ```commandline
-$ java -jar target/smagent-0.0.1-SNAPSHOT.jar
+$ java -jar target/smphotoassistant-0.0.1-SNAPSHOT.jar
 ```
 ### Setup for RAG
 * Prepare the vector database for RAG.
