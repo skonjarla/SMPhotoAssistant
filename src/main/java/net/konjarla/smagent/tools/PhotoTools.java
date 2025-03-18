@@ -55,7 +55,7 @@ public class PhotoTools {
 
     private final static String SM_PHOTO_URL = "https://photos.smugmug.com/photos/";
 
-    @Tool(description = "For a given description, find the most similar photos.")
+    @Tool(description = "Find photos across all available albums. Given a user's descriptive query, this tool searches for the most relevant photos across all accessible albums. It returns a list of photos with their corresponding metadata, including the album each photo belongs to. Use this tool when the user provides a description without specifying a particular album or when they request a broad search across all photo collections.")
     public List<SMAgentRecord.PhotoSearchResponse> findPicturesTool(String query) {
         log.info("findPicturesTool query: {}", query);
         List<Document> searchResults = vectorSearch.similaritySearch(query);
@@ -73,9 +73,9 @@ public class PhotoTools {
                 .toList();
     }
 
-    @Tool(description = "For given description and album, find the most similar photos.")
-    public List<SMAgentRecord.PhotoSearchResponse> findPicturesInAlbumTool(String query, String album) {
-        log.info("findPicturesInAlbumTool query: {}", query);
+    @Tool(description = "Find photos within a specific album. Given a user's descriptive query and an album name, this tool retrieves the most relevant photos from that exact album based on the query. It returns a list of photos with their corresponding EXIF metadata. Use this tool when the user explicitly mentions an album name or requires photos from a particular album.")
+    public List<SMAgentRecord.PhotoSearchResponse> findPicturesInAlbum(String query, String album) {
+        log.info("findPicturesInAlbum query: {}", query);
         List<PhotoCaptionVectorData> photoCaptionVectorData = photoCaptionVectorDataService.findByAlbumName(album);
         if (photoCaptionVectorData.isEmpty()) {
             return new ArrayList<>();
@@ -96,7 +96,8 @@ public class PhotoTools {
                 .toList();
     }
 
-    @Tool(description = "Retrieve and analyze metadata (e.g., album, caption, location, aperture, exposure, timestamp etc.) for a specified photo ID.")
+    // @Tool(description = "Retrieve and analyze metadata (e.g., album, caption, location, aperture, exposure, timestamp etc.) for a specified photo ID.")
+    @Tool(description = "Fetch detailed information for a specific photo by its ID. Given a unique photo ID, this tool retrieves the photo's complete metadata, including EXIF data (album, location, aperture, exposure, timestamp, etc.), the photo's caption, and the corresponding photo URI (Uniform Resource Identifier). Use this tool when the user provides a specific photo ID or requests detailed information about a particular photo identified by its ID.")
     public SMAgentRecord.PhotoSearchResponse getPhotoInformationByIdTool(String id) {
         log.info("getPhotoInformationByIdTool id: {}", id);
         PhotoCaptionVectorData photoCaptionVectorData = photoCaptionVectorDataService.getById(id);
@@ -110,9 +111,9 @@ public class PhotoTools {
                 metaData.getCountry(), metaData.getMake(), metaData.getModel(), metaData.getLens());
     }
 
-    @Tool(description = "Finds albums that match a given description or query.")
-    public List<Document> findAlbumsSymantically(String query) {
-        log.info("findAlbumsSymantically query: {}", query);
+    @Tool(description = "Finds albums semantically that match a given description or query.")
+    public List<Document> findAlbumsSemantically(String query) {
+        log.info("findAlbumsSemantically query: {}", query);
         return vectorSearch.albumSearch(query);
     }
 
