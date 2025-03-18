@@ -164,12 +164,11 @@ curl -X POST -H 'Accept: application/json' -H 'Content-Type: application/json' -
 ## Author
 **Srikanth Konjarla**
 
-## Version History
-
-* 0.1
-    * Initial Release
+## Disclaimer
+This project is for demo purposes and is not intended for production use.
 
 ## License
+Essentially, feel free to use this project however you want.  
 
 This project is licensed under the 
 
