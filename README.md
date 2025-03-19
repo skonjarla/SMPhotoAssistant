@@ -1,7 +1,8 @@
 # Personal Photo Assistant
 
-A Simple personal photo assistant. This can access personal SmugMug repository via API to answer questions about photos.
-
+A Simple personal photo assistant. This can access personal SmugMug repository via API to answer questions about photos.  
+For more information, see the following:
+* [Bridging the Gap: Leveraging Spring AI for LLM Applications](https://medium.com/@mayors.tintype_0z/bridging-the-gap-leveraging-spring-ai-for-llm-applications-ba2962cf05e2)
 ## Description
 
 This repo contains a simple photo assistant that can access SmugMug repository via API to answer questions about photos.  
